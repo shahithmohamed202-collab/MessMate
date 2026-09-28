@@ -1,0 +1,244 @@
+### Create Resident
+POST http://localhost:8080/api/residents
+Content-Type: application/json
+
+{
+  "name": "Shahith",
+  "roomNumber": "A101"
+}
+
+###
+
+### Get All Residents
+GET http://localhost:8080/api/residents
+###
+
+### Get All Residents
+GET http://localhost:8080/api/residents
+### Create Menu Item
+POST http://localhost:8080/api/menu-items
+Content-Type: application/json
+
+{
+  "weekStartDate": "2026-09-28",
+  "weekEndDate": "2026-10-04"
+}
+### Get All Menu Items
+GET http://localhost:8080/api/menu-items
+### Create Meal
+POST http://localhost:8080/api/meals
+Content-Type: application/json
+
+{
+  "mealDate": "2026-09-28",
+  "mealType": "BREAKFAST",
+  "description": "Idli and Sambar",
+  "menuItem": {
+    "id": 1
+  }
+}
+### Get All Meals
+GET http://localhost:8080/api/meals
+### Get Meals By Date
+GET http://localhost:8080/api/meals/date/2026-09-28
+### Get Meals By Type
+GET http://localhost:8080/api/meals/type/BREAKFAST
+### Get Meal By ID
+GET http://localhost:8080/api/meals/1
+### Update Meal
+PUT http://localhost:8080/api/meals/1
+Content-Type: application/json
+
+{
+  "mealDate": "2026-09-28",
+  "mealType": "LUNCH",
+  "description": "Rice, Sambar and Vegetables",
+  "menuItem": {
+    "id": 1
+  }
+}
+### Get Meal by ID
+GET http://localhost:8080/api/meals/1
+### Delete Meal
+DELETE http://localhost:8080/api/meals/1
+### ==========================================
+### MEAL OPT-OUT
+### ==========================================
+
+### Create Meal Opt-Out
+POST http://localhost:8080/api/meal-opt-outs
+Content-Type: application/json
+
+{
+  "resident": {
+    "id": 1
+  },
+  "optOutDate": "2026-09-29"
+}
+### Get All Meal Opt-Outs
+GET http://localhost:8080/api/meal-opt-outs
+### Get Meal Opt-Out by ID
+GET http://localhost:8080/api/meal-opt-outs/1
+### Get Opt-Outs by Resident
+GET http://localhost:8080/api/meal-opt-outs/resident/1
+### Update Meal Opt-Out
+PUT http://localhost:8080/api/meal-opt-outs/1
+Content-Type: application/json
+
+{
+  "optOutDate": "2026-09-30"
+}
+### Delete Meal Opt-Out
+DELETE http://localhost:8080/api/meal-opt-outs/1
+### Verify Meal Opt-Out Deletion
+GET http://localhost:8080/api/meal-opt-outs
+### ==========================================
+### FEEDBACK
+### ==========================================
+
+### Create Feedback
+POST http://localhost:8080/api/feedback
+Content-Type: application/json
+
+{
+  "resident": {
+    "id": 1
+  },
+  "meal": {
+    "id": 1
+  },
+  "rating": 5,
+  "comment": "The meal was very good."
+}
+### Check Existing Meals
+GET http://localhost:8080/api/meals
+### Check Menu Items
+GET http://localhost:8080/api/menu-items
+### Recreate Meal for Feedback Testing
+POST http://localhost:8080/api/meals
+Content-Type: application/json
+
+{
+  "mealDate": "2026-09-28",
+  "mealType": "BREAKFAST",
+  "description": "Idli and Sambar",
+  "menuItem": {
+    "id": 1
+  }
+}
+### Create Feedback
+POST http://localhost:8080/api/feedback
+Content-Type: application/json
+
+{
+  "resident": {
+    "id": 1
+  },
+  "meal": {
+    "id": 2
+  },
+  "rating": 5,
+  "comment": "The meal was very good."
+}
+### Get All Feedback
+GET http://localhost:8080/api/feedback
+### Get Feedback by ID
+GET http://localhost:8080/api/feedback/1
+### Get Feedback by Meal
+GET http://localhost:8080/api/feedback/meal/2
+### Get Feedback by Resident
+GET http://localhost:8080/api/feedback/resident/1
+### Update Feedback
+PUT http://localhost:8080/api/feedback/1
+Content-Type: application/json
+
+{
+  "rating": 4,
+  "comment": "The meal was good, but could be improved."
+}
+### Delete Feedback
+DELETE http://localhost:8080/api/feedback/1
+### Verify Feedback Deletion
+GET http://localhost:8080/api/feedback
+### Test Duplicate Feedback
+POST http://localhost:8080/api/feedback
+Content-Type: application/json
+
+{
+  "resident": {
+    "id": 1
+  },
+  "meal": {
+    "id": 2
+  },
+  "rating": 3,
+  "comment": "Another feedback"
+}
+### Test Resource Not Found
+GET http://localhost:8080/api/meals/9999
+### Test Duplicate Meal Opt-Out
+POST http://localhost:8080/api/meal-opt-outs
+Content-Type: application/json
+
+{
+  "resident": {
+    "id": 1
+  },
+  "optOutDate": "2026-09-29"
+}
+### Test Invalid Feedback Rating
+POST http://localhost:8080/api/feedback
+Content-Type: application/json
+
+{
+  "resident": {
+    "id": 1
+  },
+  "meal": {
+    "id": 2
+  },
+  "rating": 7,
+  "comment": "Testing validation"
+}
+### Test Empty Feedback Comment
+POST http://localhost:8080/api/feedback
+Content-Type: application/json
+
+{
+  "resident": {
+    "id": 1
+  },
+  "meal": {
+    "id": 2
+  },
+  "rating": 5,
+  "comment": ""
+}
+### Invalid Feedback Rating
+POST http://localhost:8080/api/feedback
+Content-Type: application/json
+
+{
+  "resident": {
+    "id": 1
+  },
+  "meal": {
+    "id": 2
+  },
+  "rating": 7,
+  "comment": "Testing validation"
+}
+### Empty Feedback Comment
+POST http://localhost:8080/api/feedback
+Content-Type: application/json
+
+{
+  "resident": {
+    "id": 1
+  },
+  "meal": {
+    "id": 2
+  },
+  "rating": 5,
+  "comment": ""
+}

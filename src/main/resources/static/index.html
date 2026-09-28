@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0">
+
+    <title>
+        MessMate - Smart Mess Management
+    </title>
+
+    <link
+            rel="stylesheet"
+            href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🍽️
+        </div>
+
+        <div>
+
+            <h1>
+                MessMate
+            </h1>
+
+            <p>
+                Smart Mess System
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+
+        <button
+                class="nav-item active"
+                data-section="dashboard"
+                onclick="showSection('dashboard')">
+
+            <span>🏠</span>
+            <span>Dashboard</span>
+
+        </button>
+
+
+        <button
+                class="nav-item"
+                data-section="residents"
+                onclick="showSection('residents')">
+
+            <span>👨‍🎓</span>
+            <span>Residents</span>
+
+        </button>
+
+
+        <button
+                class="nav-item"
+                data-section="menu"
+                onclick="showSection('menu')">
+
+            <span>📋</span>
+            <span>Menu</span>
+
+        </button>
+
+
+        <button
+                class="nav-item"
+                data-section="meals"
+                onclick="showSection('meals')">
+
+            <span>🍛</span>
+            <span>Meals</span>
+
+        </button>
+
+
+        <button
+                class="nav-item"
+                data-section="optout"
+                onclick="showSection('optout')">
+
+            <span>🚫</span>
+            <span>Meal Opt-Out</span>
+
+        </button>
+
+
+        <button
+                class="nav-item"
+                data-section="feedback"
+                onclick="showSection('feedback')">
+
+            <span>💬</span>
+            <span>Feedback</span>
+
+        </button>
+
+    </nav>
+
+
+    <div class="sidebar-footer">
+
+        <div class="connection-dot"></div>
+
+        <div>
+
+            <strong>
+                System
+            </strong>
+
+            <small>
+                MessMate v1.0
+            </small>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<div class="main-wrapper">
+
+
+    <!-- =================================================
+         TOP HEADER
+    ================================================= -->
+
+    <header class="topbar">
+
+        <div>
+
+            <p class="topbar-label">
+                SMART MESS MANAGEMENT
+            </p>
+
+            <h2 id="pageTitle">
+                Dashboard
+            </h2>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="live-status">
+
+                <span class="live-dot"></span>
+
+                <span>
+                    System Online
+                </span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         MAIN
+    ================================================= -->
+
+    <main class="container">
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================= -->
+
+        <section
+                id="dashboard"
+                class="section active">
+
+
+            <div class="dashboard-welcome">
+
+                <div>
+
+                    <span class="eyebrow">
+                        MESSMATE DASHBOARD
+                    </span>
+
+                    <h1>
+                        Welcome back 👋
+                    </h1>
+
+                    <p>
+                        Manage your mess operations,
+                        residents, meals and feedback
+                        from one centralized system.
+                    </p>
+
+                </div>
+
+
+                <div class="welcome-icon">
+                    🍽️
+                </div>
+
+            </div>
+
+
+
+            <div class="stats">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        👨‍🎓
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Total Residents
+                        </p>
+
+                        <h3 id="residentCount">
+                            0
+                        </h3>
+
+                        <span class="stat-label">
+                            Registered residents
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Total Menus
+                        </p>
+
+                        <h3 id="menuCount">
+                            0
+                        </h3>
+
+                        <span class="stat-label">
+                            Menu periods
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        🍛
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Total Meals
+                        </p>
+
+                        <h3 id="mealCount">
+                            0
+                        </h3>
+
+                        <span class="stat-label">
+                            Scheduled meals
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        💬
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Total Feedback
+                        </p>
+
+                        <h3 id="feedbackCount">
+                            0
+                        </h3>
+
+                        <span class="stat-label">
+                            Resident responses
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="dashboard-grid">
+
+
+                <div class="dashboard-card system-card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <span class="card-eyebrow">
+                                SYSTEM HEALTH
+                            </span>
+
+                            <h2>
+                                Backend Status
+                            </h2>
+
+                        </div>
+
+                        <span class="status-icon">
+                            ⚡
+                        </span>
+
+                    </div>
+
+
+                    <div
+                            id="systemStatus"
+                            class="system-status">
+
+                        Checking backend...
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="dashboard-card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <span class="card-eyebrow">
+                                QUICK ACTIONS
+                            </span>
+
+                            <h2>
+                                Manage System
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+
+                        <button
+                                onclick="showSection('residents')">
+
+                            <span>
+                                👨‍🎓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Residents
+                                </strong>
+
+                                <small>
+                                    Manage residents
+                                </small>
+
+                            </div>
+
+                        </button>
+
+
+
+                        <button
+                                onclick="showSection('meals')">
+
+                            <span>
+                                🍛
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Meals
+                                </strong>
+
+                                <small>
+                                    Manage meals
+                                </small>
+
+                            </div>
+
+                        </button>
+
+
+
+                        <button
+                                onclick="showSection('feedback')">
+
+                            <span>
+                                💬
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Feedback
+                                </strong>
+
+                                <small>
+                                    View feedback
+                                </small>
+
+                            </div>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="dashboard-card info-card">
+
+                <div class="info-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <h3>
+                        MessMate Management Platform
+                    </h3>
+
+                    <p>
+                        A centralized system for managing
+                        residents, weekly menus, daily meals,
+                        meal opt-outs and resident feedback.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RESIDENTS
+        ================================================= -->
+
+        <section
+                id="residents"
+                class="section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        RESIDENT MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Residents
+                    </h2>
+
+                    <p>
+                        Add, update and manage mess residents.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-card">
+
+
+                <div class="form-title">
+
+                    <div class="form-icon">
+                        👨‍🎓
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Resident Details
+                        </h3>
+
+                        <p>
+                            Enter resident information below.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label for="residentId">
+                        Resident ID
+                    </label>
+
+                    <input
+                            type="number"
+                            id="residentId"
+                            placeholder="Example: 101"
+                            min="1">
+
+                </div>
+
+
+
+                <div class="form-grid">
+
+
+                    <div class="field">
+
+                        <label for="residentName">
+                            Resident Name
+                        </label>
+
+                        <input
+                                type="text"
+                                id="residentName"
+                                placeholder="Enter resident name">
+
+                    </div>
+
+
+
+                    <div class="field">
+
+                        <label for="residentRoom">
+                            Room Number
+                        </label>
+
+                        <input
+                                type="text"
+                                id="residentRoom"
+                                placeholder="Example: A-204">
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-buttons">
+
+                    <button
+                            class="primary"
+                            onclick="saveResident()">
+
+                        <span>
+                            ＋
+                        </span>
+
+                        Save Resident
+
+                    </button>
+
+
+                    <button
+                            class="secondary"
+                            onclick="clearResidentForm()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="table-card">
+
+
+                <div class="table-heading">
+
+                    <div>
+
+                        <h3>
+                            Resident Records
+                        </h3>
+
+                        <p>
+                            All registered mess residents
+                        </p>
+
+                    </div>
+
+                    <span class="record-badge">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Room
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                        </thead>
+
+
+                        <tbody id="residentTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MENU
+        ================================================= -->
+
+        <section
+                id="menu"
+                class="section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        MENU MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Weekly Menu
+                    </h2>
+
+                    <p>
+                        Create and manage weekly menu periods.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-card">
+
+
+                <div class="form-title">
+
+                    <div class="form-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Menu Period
+                        </h3>
+
+                        <p>
+                            Define the menu ID and period dates.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label for="menuId">
+                        Menu ID
+                    </label>
+
+                    <input
+                            type="number"
+                            id="menuId"
+                            placeholder="Example: 201"
+                            min="1">
+
+                </div>
+
+
+
+                <div class="form-grid">
+
+
+                    <div class="field">
+
+                        <label for="weekStartDate">
+                            Week Start Date
+                        </label>
+
+                        <input
+                                type="date"
+                                id="weekStartDate">
+
+                    </div>
+
+
+
+                    <div class="field">
+
+                        <label for="weekEndDate">
+                            Week End Date
+                        </label>
+
+                        <input
+                                type="date"
+                                id="weekEndDate">
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-buttons">
+
+                    <button
+                            class="primary"
+                            onclick="saveMenu()">
+
+                        <span>
+                            ＋
+                        </span>
+
+                        Save Menu
+
+                    </button>
+
+
+                    <button
+                            class="secondary"
+                            onclick="clearMenuForm()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="table-card">
+
+
+                <div class="table-heading">
+
+                    <div>
+
+                        <h3>
+                            Menu Records
+                        </h3>
+
+                        <p>
+                            Weekly menu periods
+                        </p>
+
+                    </div>
+
+                    <span class="record-badge">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Week Start
+                            </th>
+
+                            <th>
+                                Week End
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                        </thead>
+
+
+                        <tbody id="menuTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MEALS
+        ================================================= -->
+
+        <section
+                id="meals"
+                class="section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        MEAL MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Meals
+                    </h2>
+
+                    <p>
+                        Schedule and manage daily meals.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-card">
+
+
+                <div class="form-title">
+
+                    <div class="form-icon">
+                        🍛
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Meal Details
+                        </h3>
+
+                        <p>
+                            Create a daily meal record.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <input
+                        type="hidden"
+                        id="mealId">
+
+
+
+                <div class="form-grid">
+
+
+                    <div class="field">
+
+                        <label for="mealDate">
+                            Meal Date
+                        </label>
+
+                        <input
+                                type="date"
+                                id="mealDate">
+
+                    </div>
+
+
+
+                    <div class="field">
+
+                        <label for="mealType">
+                            Meal Type
+                        </label>
+
+                        <select id="mealType">
+
+                            <option value="">
+                                Select Meal Type
+                            </option>
+
+                            <option value="BREAKFAST">
+                                Breakfast
+                            </option>
+
+                            <option value="LUNCH">
+                                Lunch
+                            </option>
+
+                            <option value="DINNER">
+                                Dinner
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-grid">
+
+
+                    <div class="field">
+
+                        <label for="mealDescription">
+                            Description
+                        </label>
+
+                        <input
+                                type="text"
+                                id="mealDescription"
+                                placeholder="Rice, Sambar, Vegetable Curry">
+
+                    </div>
+
+
+
+                    <div class="field">
+
+                        <label for="mealMenuItemId">
+                            Menu Item ID
+                        </label>
+
+                        <input
+                                type="number"
+                                id="mealMenuItemId"
+                                placeholder="Existing Menu ID">
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-buttons">
+
+                    <button
+                            class="primary"
+                            onclick="saveMeal()">
+
+                        <span>
+                            ＋
+                        </span>
+
+                        Save Meal
+
+                    </button>
+
+
+                    <button
+                            class="secondary"
+                            onclick="clearMealForm()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="table-card">
+
+
+                <div class="table-heading">
+
+                    <div>
+
+                        <h3>
+                            Meal Records
+                        </h3>
+
+                        <p>
+                            Scheduled daily meals
+                        </p>
+
+                    </div>
+
+                    <span class="record-badge">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Type
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+
+                            <th>
+                                Menu ID
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                        </thead>
+
+
+                        <tbody id="mealTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MEAL OPT OUT
+        ================================================= -->
+
+        <section
+                id="optout"
+                class="section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        MEAL OPT-OUT
+                    </span>
+
+                    <h2>
+                        Meal Opt-Out
+                    </h2>
+
+                    <p>
+                        Allow residents to skip meals on selected dates.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-card">
+
+
+                <div class="form-title">
+
+                    <div class="form-icon">
+                        🚫
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Submit Opt-Out
+                        </h3>
+
+                        <p>
+                            Select the resident and date.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-grid">
+
+
+                    <div class="field">
+
+                        <label for="optOutResidentId">
+                            Resident ID
+                        </label>
+
+                        <input
+                                type="number"
+                                id="optOutResidentId"
+                                placeholder="Enter Resident ID">
+
+                    </div>
+
+
+
+                    <div class="field">
+
+                        <label for="optOutDate">
+                            Opt-Out Date
+                        </label>
+
+                        <input
+                                type="date"
+                                id="optOutDate">
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-buttons">
+
+                    <button
+                            class="primary"
+                            onclick="saveOptOut()">
+
+                        Submit Opt-Out
+
+                    </button>
+
+
+                    <button
+                            class="secondary"
+                            onclick="clearOptOutForm()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="table-card">
+
+
+                <div class="table-heading">
+
+                    <div>
+
+                        <h3>
+                            Opt-Out Records
+                        </h3>
+
+                        <p>
+                            Residents who skipped meals
+                        </p>
+
+                    </div>
+
+                    <span class="record-badge">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Resident ID
+                            </th>
+
+                            <th>
+                                Resident Name
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                        </thead>
+
+
+                        <tbody id="optOutTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FEEDBACK
+        ================================================= -->
+
+        <section
+                id="feedback"
+                class="section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        FEEDBACK MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Meal Feedback
+                    </h2>
+
+                    <p>
+                        Review resident ratings and comments.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SEARCH FEEDBACK
+            ================================================= -->
+
+            <div class="form-card">
+
+
+                <div class="form-title">
+
+                    <div class="form-icon">
+                        🔎
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Search Feedback
+                        </h3>
+
+                        <p>
+                            Filter feedback by resident, meal or rating.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-grid">
+
+
+                    <!-- RESIDENT SEARCH -->
+
+                    <div class="field">
+
+                        <label for="searchResidentId">
+                            Resident ID
+                        </label>
+
+                        <input
+                                type="number"
+                                id="searchResidentId"
+                                placeholder="Example: 101"
+                                min="1">
+
+                    </div>
+
+
+
+                    <!-- MEAL SEARCH -->
+
+                    <div class="field">
+
+                        <label for="searchMealId">
+                            Meal ID
+                        </label>
+
+                        <input
+                                type="number"
+                                id="searchMealId"
+                                placeholder="Example: 301"
+                                min="1">
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RATING SEARCH -->
+
+                <div class="field">
+
+                    <label for="searchRating">
+                        Rating
+                    </label>
+
+                    <select id="searchRating">
+
+                        <option value="">
+                            All Ratings
+                        </option>
+
+                        <option value="1">
+                            ⭐ 1 - Poor
+                        </option>
+
+                        <option value="2">
+                            ⭐⭐ 2 - Fair
+                        </option>
+
+                        <option value="3">
+                            ⭐⭐⭐ 3 - Good
+                        </option>
+
+                        <option value="4">
+                            ⭐⭐⭐⭐ 4 - Very Good
+                        </option>
+
+                        <option value="5">
+                            ⭐⭐⭐⭐⭐ 5 - Excellent
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SEARCH BUTTONS
+                ================================================= -->
+
+                <div class="form-buttons">
+
+                    <button
+                            type="button"
+                            class="primary"
+                            onclick="searchFeedback()">
+
+                        🔎
+                        Search Feedback
+
+                    </button>
+
+
+                    <button
+                            type="button"
+                            class="secondary"
+                            onclick="clearFeedbackSearch()">
+
+                        ↻
+                        Clear Search
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FEEDBACK ENTRY
+            ================================================= -->
+
+            <div class="form-card">
+
+
+                <div class="form-title">
+
+                    <div class="form-icon">
+                        💬
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Submit Feedback
+                        </h3>
+
+                        <p>
+                            Rate a meal and share your experience.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-grid">
+
+
+                    <div class="field">
+
+                        <label for="feedbackResidentId">
+                            Resident ID
+                        </label>
+
+                        <input
+                                type="number"
+                                id="feedbackResidentId"
+                                placeholder="Enter Resident ID">
+
+                    </div>
+
+
+
+                    <div class="field">
+
+                        <label for="feedbackMealId">
+                            Meal ID
+                        </label>
+
+                        <input
+                                type="number"
+                                id="feedbackMealId"
+                                placeholder="Enter Meal ID">
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label for="feedbackRating">
+                        Rating
+                    </label>
+
+                    <select id="feedbackRating">
+
+                        <option value="">
+                            Select Rating
+                        </option>
+
+                        <option value="1">
+                            ⭐ 1 - Poor
+                        </option>
+
+                        <option value="2">
+                            ⭐⭐ 2 - Fair
+                        </option>
+
+                        <option value="3">
+                            ⭐⭐⭐ 3 - Good
+                        </option>
+
+                        <option value="4">
+                            ⭐⭐⭐⭐ 4 - Very Good
+                        </option>
+
+                        <option value="5">
+                            ⭐⭐⭐⭐⭐ 5 - Excellent
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label for="feedbackComment">
+                        Comment
+                    </label>
+
+                    <textarea
+                            id="feedbackComment"
+                            placeholder="Write your feedback..."></textarea>
+
+                </div>
+
+
+
+                <div class="form-buttons">
+
+                    <button
+                            class="primary"
+                            onclick="saveFeedback()">
+
+                        <span>
+                            ✦
+                        </span>
+
+                        Submit Feedback
+
+                    </button>
+
+
+                    <button
+                            class="secondary"
+                            onclick="clearFeedbackForm()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FEEDBACK TABLE
+            ================================================= -->
+
+            <div class="table-card">
+
+
+                <div class="table-heading">
+
+                    <div>
+
+                        <h3>
+                            Feedback Records
+                        </h3>
+
+                        <p>
+                            Resident meal feedback
+                        </p>
+
+                    </div>
+
+                    <span class="record-badge">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                        <tr>
+
+                            <th>
+                                ID
+                            </th>
+
+                            <th>
+                                Resident
+                            </th>
+
+                            <th>
+                                Meal
+                            </th>
+
+                            <th>
+                                Rating
+                            </th>
+
+                            <th>
+                                Comment
+                            </th>
+
+                            <th>
+                                Created At
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                        </thead>
+
+
+                        <tbody id="feedbackTableBody">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =================================================
+         TOAST
+    ================================================= -->
+
+    <div id="toast"></div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
